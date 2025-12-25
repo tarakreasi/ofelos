@@ -12,6 +12,9 @@ Terinspirasi dari kesederhanaan sebuah buku catatan (OneNote), Ofelos hadir deng
 - **Eksplorasi UI/UX**: Mencoba melahirkan pengalaman pengguna yang premium namun tetap ringan dan bersih.
 - **Dokumentasi Perjalanan**: Sebuah tempat rendah hati untuk mencatat apa yang telah dipelajari dan apa yang sedang dikembangkan.
 
+> **Untuk Pembelajar**: Jika Anda ingin memahami struktur kode dan keputusan teknis di balik proyek ini, silakan baca [Panduan Belajar (LEARNING_GUIDE.md)](LEARNING_GUIDE.md).
+
+
 ## Tentang Pengembang
 
 Saya sedang menempuh perjalanan untuk menjadi pengembang fullstack yang handal. Proyek Ofelos ini adalah salah satu bentuk dedikasi saya untuk terus tumbuh, belajar dari kesalahan, dan merayakan progres kecil setiap harinya.
