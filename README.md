@@ -39,10 +39,16 @@ Saya sedang menempuh perjalanan untuk menjadi pengembang fullstack yang handal. 
    ```
    Aplikasi akan tersedia di [http://localhost:3000](http://localhost:3000).
 
-5. **Informasi Login (Admin)**:
-   Gunakan kredensial berikut untuk masuk ke panel admin:
-   - **Email**: `admin@ofelos.dev`
-   - **Password**: `password123`
+5. **Membuat Akun Admin**:
+   Untuk membuat akun admin pertama kali, gunakan Rails console:
+   ```bash
+   ./bin/rails console
+   ```
+   Kemudian jalankan perintah berikut:
+   ```ruby
+   Admin.create!(email: 'admin@ofelos.dev', password: 'your_secure_password', password_confirmation: 'your_secure_password')
+   ```
+   Ganti `'your_secure_password'` dengan kata sandi yang aman.
 
 ---
 *Dibuat dengan semangat belajar oleh Tara Kreasi*
