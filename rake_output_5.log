@@ -1,0 +1,34 @@
+rake aborted!
+NoMethodError: undefined method `halt_callback_chains_on_return_false=' for ActiveSupport:Module (NoMethodError)
+
+ActiveSupport.halt_callback_chains_on_return_false = false
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/twantoro/project/ofelos/config/initializers/new_framework_defaults.rb:23:in `<top (required)>'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activesupport-5.2.8.1/lib/active_support/dependencies.rb:285:in `load'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activesupport-5.2.8.1/lib/active_support/dependencies.rb:285:in `block in load'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activesupport-5.2.8.1/lib/active_support/dependencies.rb:257:in `load_dependency'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activesupport-5.2.8.1/lib/active_support/dependencies.rb:285:in `load'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-5.2.8.1/lib/rails/engine.rb:663:in `block in load_config_initializer'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activesupport-5.2.8.1/lib/active_support/notifications.rb:170:in `instrument'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-5.2.8.1/lib/rails/engine.rb:662:in `load_config_initializer'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-5.2.8.1/lib/rails/engine.rb:620:in `block (2 levels) in <class:Engine>'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-5.2.8.1/lib/rails/engine.rb:619:in `each'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-5.2.8.1/lib/rails/engine.rb:619:in `block in <class:Engine>'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-5.2.8.1/lib/rails/initializable.rb:32:in `instance_exec'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-5.2.8.1/lib/rails/initializable.rb:32:in `run'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-5.2.8.1/lib/rails/initializable.rb:61:in `block in run_initializers'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-5.2.8.1/lib/rails/initializable.rb:50:in `each'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-5.2.8.1/lib/rails/initializable.rb:50:in `tsort_each_child'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-5.2.8.1/lib/rails/initializable.rb:60:in `run_initializers'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-5.2.8.1/lib/rails/application.rb:361:in `initialize!'
+/home/twantoro/project/ofelos/config/environment.rb:5:in `<top (required)>'
+<internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:38:in `require'
+<internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:38:in `require'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activesupport-5.2.8.1/lib/active_support/dependencies.rb:291:in `block in require'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activesupport-5.2.8.1/lib/active_support/dependencies.rb:257:in `load_dependency'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activesupport-5.2.8.1/lib/active_support/dependencies.rb:291:in `require'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-5.2.8.1/lib/rails/application.rb:337:in `require_environment!'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-5.2.8.1/lib/rails/application.rb:520:in `block in run_tasks_blocks'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/exe/rake:27:in `<top (required)>'
+Tasks: TOP => db:migrate => db:load_config => environment
+(See full trace by running task with --trace)

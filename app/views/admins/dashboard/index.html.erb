@@ -1,0 +1,71 @@
+<div class="dashboard-header">
+  <h1 class="dashboard-title">Panel Admin</h1>
+  <p class="dashboard-subtitle">Kelola konten dan pantau statistik jurnal Anda.</p>
+</div>
+
+<div class="dashboard-grid">
+  <div class="glass-card dashboard-card">
+    <p class="dashboard-card-label">Total Tulisan</p>
+    <h2 class="dashboard-card-value"><%= @post_count %></h2>
+  </div>
+  
+  <div class="glass-card dashboard-card">
+    <p class="dashboard-card-label">Kunjungan Terakhir</p>
+    <h2 class="dashboard-card-value secondary">--</h2>
+  </div>
+
+  <div class="glass-card dashboard-card">
+    <p class="dashboard-card-label">Post Terakhir</p>
+    <% if @latest_post %>
+      <div style="font-size: 0.9rem; font-weight: 600; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+        <%= @latest_post.title %>
+      </div>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin: 4px 0 0;"><%= @latest_post.created_at.strftime("%d %b %Y") %></p>
+    <% else %>
+      <p style="color: var(--text-muted); margin: 0;">Belum ada data</p>
+    <% end %>
+  </div>
+</div>
+
+<div class="glass-card">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <h3 style="font-size: 1.5rem; font-weight: 700; color: white; margin: 0;">Daftar Tulisan</h3>
+    <%= link_to new_post_path, class: "btn-ofelos btn-primary-ofelos", style: "padding: 8px 16px; font-size: 0.85rem;" do %>
+      + Tulis Baru
+    <% end %>
+  </div>
+
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Judul</th>
+          <th>Tanggal</th>
+          <th style="padding: 0 12px; text-align: right;">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td>
+              <div style="font-weight: 600; color: white;"><%= post.title %></div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);"><%= strip_tags(post.body).truncate(60) %></div>
+            </td>
+            <td style="color: var(--text-secondary); font-size: 0.9rem;">
+              <%= post.created_at.strftime("%d %b %Y") %>
+            </td>
+            <td>
+              <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                <%= link_to "Tampilkan", post_path(post), class: "btn-ofelos btn-outline-ofelos btn-xs" %>
+                <%= link_to "Edit", edit_post_path(post), class: "btn-ofelos btn-outline-ofelos btn-xs" %>
+                <%= link_to "Hapus", post, method: :delete, data: { confirm: 'Yakin ingin menghapus?' }, class: "btn-ofelos btn-outline-ofelos btn-xs btn-danger" %>
+              </div>
+            </td>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+

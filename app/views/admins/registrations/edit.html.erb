@@ -1,47 +1,72 @@
-<div class="col-sm-offset-4 col-sm-4 col-xs-12">
-  <h2 class="text-center">Edit <%= resource_name.to_s.humanize %></h2>
+<div style="max-width: 600px; margin: 0 auto;">
+  <div style="margin-bottom: 40px;">
+    <%= link_to :back, style: "color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; margin-bottom: 16px;" do %>
+      ← Kembali
+    <% end %>
+    <h1 style="font-size: 2.5rem; font-weight: 800; color: white;">Pengaturan Akun</h1>
+    <p style="color: var(--text-secondary);">Perbarui informasi profil dan keamanan Anda.</p>
+  </div>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form" }) do |f| %>
-    <%= devise_error_messages! %>
+  <div class="glass-card">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
 
-    <div class="form-group">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, class: "form-control" %>
-    </div>
+      <div class="form-group">
+        <%= f.label :email, "Alamat Email", class: "form-label" %>
+        <%= f.email_field :email, autofocus: true, class: "form-input" %>
+      </div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div style="margin-bottom: 20px; color: var(--accent-secondary); font-size: 0.9rem;">
+          Menunggu konfirmasi untuk: <%= resource.unconfirmed_email %>
+        </div>
+      <% end %>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div class="form-group">
+          <%= f.label :password, class: "form-label" do %>
+            Kata Sandi Baru <span style="font-size: 0.75rem; font-weight: 400; color: var(--text-muted);">(Biarkan kosong jika tidak ingin ganti)</span>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "off", class: "form-input" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, "Konfirmasi Kata Sandi", class: "form-label" %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-input" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :current_password, class: "form-label" do %>
+          Kata Sandi Saat Ini <span style="font-size: 0.75rem; font-weight: 400; color: var(--text-muted);">(Dibutuhkan untuk konfirmasi perubahan)</span>
+        <% end %>
+        <%= f.password_field :current_password, autocomplete: "off", class: "form-input" %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :avatar, "Foto Profil", class: "form-label" %>
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <% if resource.avatar? %>
+            <%= image_tag resource.avatar.url, style: "width: 60px; height: 60px; border-radius: 12px; object-fit: cover; border: 1px solid var(--glass-border);" %>
+          <% end %>
+          <div style="flex: 1;">
+            <%= f.file_field :avatar, class: "form-input", style: "padding: 8px;" %>
+            <%= f.hidden_field :avatar_cache %>
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-top: 32px;">
+        <%= f.submit "Simpan Perubahan", class: "btn-ofelos btn-primary-ofelos", style: "width: 100%; justify-content: center;" %>
+      </div>
     <% end %>
 
-    <div class="form-group">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+    <div style="margin-top: 60px; border-top: 1px solid var(--glass-border); padding-top: 32px;">
+      <h3 style="font-size: 1.25rem; font-weight: 700; color: #fca5a5; margin-bottom: 16px;">Hapus Akun</h3>
+      <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px;">
+        Tindakan ini tidak dapat dibatalkan. Semua data Anda akan dihapus secara permanen.
+      </p>
+      <%= button_to "Hapus Akun Saya", registration_path(resource_name), data: { confirm: "Anda yakin ingin menghapus akun?" }, method: :delete, class: "btn-ofelos btn-outline-ofelos", style: "color: #fca5a5; border-color: rgba(239, 68, 68, 0.2);" %>
     </div>
-
-    <div class="form-group">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
-    </div>
-    
-	<div class="form-group">
-      <%= f.label :avatar do %><br />
-        <%= f.file_field :avatar, class: "form-control" %>
-        <%= f.hidden_field :avatar_cache %>
-      <% end %>
-    </div>
-    
-    <%= f.submit "Update", class: "btn btn-primary btn-lg" %>
-  <% end %>
-
-  <h3 class="text-center">Cancel my account</h3>
-
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-lg" %></p>
-
-  <%= link_to "Back", :back, class: "btn btn-primary btn-lg" %>
-
+  </div>
 </div>

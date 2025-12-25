@@ -1,4 +1,4 @@
-CKEDITOR.editorConfig = function(config) {
+CKEDITOR.editorConfig = function (config) {
   config.language = 'en';
   config.width = '700';
   config.filebrowserBrowseUrl = "/ckeditor/attachment_files";
@@ -6,6 +6,8 @@ CKEDITOR.editorConfig = function(config) {
   config.filebrowserImageBrowseUrl = "/ckeditor/pictures";
   config.filebrowserImageUploadUrl = "/ckeditor/pictures";
   config.filebrowserUploadUrl = "/ckeditor/attachment_files";
+  config.skin = 'moono-lisa,/assets/ckeditor/skins/moono-lisa/';
+
 
   config.toolbar_Pure = [
     '/', {

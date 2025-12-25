@@ -1,27 +1,36 @@
-<div class="col-sm-offset-4 col-sm-4 col-xs-12">
-  <h2 class="text-center">Log in</h2>
-
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form"}) do |f| %>
-    <div class="form-group">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, class: "form-control" %>
+<div style="height: calc(100vh - 120px); display: flex; align-items: center; justify-content: center;">
+  <div class="glass-card" style="max-width: 420px; width: 100%;">
+    <div style="text-align: center; margin-bottom: 32px;">
+      <div class="logo-icon" style="margin: 0 auto 16px;"></div>
+      <h2 style="font-size: 2rem; font-weight: 800; color: white; margin-bottom: 8px;">Masuk Admin</h2>
+      <p style="color: var(--text-secondary); font-size: 0.95rem;">Hanya untuk pengembang yang berwenang.</p>
     </div>
 
-    <div class="form-group">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-    </div>
-
-    <% if devise_mapping.rememberable? %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+        <%= f.label :email, "Alamat Email", class: "form-label" %>
+        <%= f.email_field :email, autofocus: true, class: "form-input", placeholder: "email@contoh.com" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, "Kata Sandi", class: "form-label" %>
+        <%= f.password_field :password, autocomplete: "off", class: "form-input", placeholder: "••••••••" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div style="margin-bottom: 24px; display: flex; align-items: center; gap: 10px;">
+          <%= f.check_box :remember_me, style: "width: 16px; height: 16px; accent-color: var(--accent-primary);" %>
+          <%= f.label :remember_me, "Ingat saya", style: "margin: 0; font-size: 0.9rem; color: var(--text-secondary); cursor: pointer;" %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Masuk Sekarang", class: "btn-ofelos btn-primary-ofelos", style: "width: 100%; justify-content: center;" %>
       </div>
     <% end %>
 
-    <%= f.submit "Log in", class: "btn btn-primary btn-lg" %>
-  <% end %>
-
+    <div style="margin-top: 32px; text-align: center; font-size: 0.9rem; border-top: 1px solid var(--glass-border); padding-top: 24px;">
+      <%= render "admins/shared/links" %>
+    </div>
+  </div>
 </div>
-
-<%= render "admins/shared/links" %>

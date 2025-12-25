@@ -1,3 +1,14 @@
-<h2>Create New Post</h2>
+<div class="form-container">
+  <div class="page-header">
+    <%= link_to posts_path, class: "back-link" do %>
+      ← Kembali
+    <% end %>
+    <h1 class="page-title">Tulis Post Baru</h1>
+    <p class="page-subtitle">Bagikan apa yang baru saja Anda pelajari hari ini.</p>
+  </div>
 
-<%= render "posts/form" %>
+  <div class="glass-card">
+    <%= render 'form' %>
+  </div>
+</div>
+

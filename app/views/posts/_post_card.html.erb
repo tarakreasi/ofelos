@@ -1,0 +1,26 @@
+<div class="glass-card post-card animate-fade-in">
+  <div class="post-card-meta">
+    <%= post.created_at.strftime("%d %b %Y") %>
+  </div>
+  <h2 class="post-card-title"><%= post.title %></h2>
+  <div class="post-card-preview">
+    <%= strip_tags(post.body).truncate(140) %>
+  </div>
+  <div class="post-card-footer">
+    <%= link_to post_path(post), class: "btn-ofelos btn-outline-ofelos btn-sm" do %>
+      Baca Selengkapnya
+    <% end %>
+
+    
+    <% if admin_signed_in? %>
+      <div class="action-links">
+        <%= link_to edit_post_path(post), class: "action-link-edit" do %>
+          Edit
+        <% end %>
+        <%= link_to post, method: :delete, data: { confirm: 'Yakin ingin menghapus?' }, class: "action-link-delete" do %>
+          Hapus
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

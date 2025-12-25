@@ -1,0 +1,30 @@
+rake aborted!
+NameError: uninitialized constant ActiveSupport::LoggerThreadSafeLevel::Logger (NameError)
+
+    Logger::Severity.constants.each do |severity|
+          ^^^^^^^^^^
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activesupport-6.0.6.1/lib/active_support/logger_thread_safe_level.rb:16:in `<module:LoggerThreadSafeLevel>'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activesupport-6.0.6.1/lib/active_support/logger_thread_safe_level.rb:9:in `<module:ActiveSupport>'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activesupport-6.0.6.1/lib/active_support/logger_thread_safe_level.rb:8:in `<top (required)>'
+<internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:38:in `require'
+<internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:38:in `require'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activesupport-6.0.6.1/lib/active_support/logger_silence.rb:5:in `<top (required)>'
+<internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:38:in `require'
+<internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:38:in `require'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activesupport-6.0.6.1/lib/active_support/logger.rb:3:in `<top (required)>'
+<internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:38:in `require'
+<internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:38:in `require'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activesupport-6.0.6.1/lib/active_support.rb:29:in `<top (required)>'
+<internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:38:in `require'
+<internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:38:in `require'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-6.0.6.1/lib/rails.rb:7:in `<top (required)>'
+<internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:38:in `require'
+<internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:38:in `require'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/railties-6.0.6.1/lib/rails/all.rb:5:in `<top (required)>'
+<internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:38:in `require'
+<internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:38:in `require'
+/home/twantoro/project/ofelos/config/application.rb:3:in `<top (required)>'
+/home/twantoro/project/ofelos/Rakefile:4:in `require_relative'
+/home/twantoro/project/ofelos/Rakefile:4:in `<top (required)>'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/exe/rake:27:in `<top (required)>'
+(See full trace by running task with --trace)

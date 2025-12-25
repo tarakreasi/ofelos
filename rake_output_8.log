@@ -1,0 +1,16 @@
+rake aborted!
+ArgumentError: wrong number of arguments (given 5, expected 1..4) (ArgumentError)
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activerecord-5.2.8.1/lib/active_record/connection_adapters/abstract/schema_definitions.rb:263:in `initialize'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activerecord-5.2.8.1/lib/active_record/connection_adapters/sqlite3/schema_statements.rb:60:in `new'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activerecord-5.2.8.1/lib/active_record/connection_adapters/sqlite3/schema_statements.rb:60:in `create_table_definition'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activerecord-5.2.8.1/lib/active_record/connection_adapters/abstract/schema_statements.rb:291:in `create_table'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activerecord-5.2.8.1/lib/active_record/schema_migration.rb:29:in `create_table'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activerecord-5.2.8.1/lib/active_record/migration.rb:1187:in `initialize'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activerecord-5.2.8.1/lib/active_record/migration.rb:1036:in `new'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activerecord-5.2.8.1/lib/active_record/migration.rb:1036:in `up'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activerecord-5.2.8.1/lib/active_record/migration.rb:1011:in `migrate'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activerecord-5.2.8.1/lib/active_record/tasks/database_tasks.rb:172:in `migrate'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/activerecord-5.2.8.1/lib/active_record/railties/databases.rake:60:in `block (2 levels) in <top (required)>'
+/home/twantoro/project/ofelos/vendor/bundle/ruby/3.2.0/gems/rake-13.3.1/exe/rake:27:in `<top (required)>'
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)

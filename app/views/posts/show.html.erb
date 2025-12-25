@@ -1,5 +1,43 @@
-<div class="col-sm-11 col-xs-12 blog-content">
-  <h2 class="text-center"><%= @post.title %></h2>
-  <h5 class="text-center"><%= @post.created_at.strftime('%b %d, %Y') %></h5>
-  <div><%= raw @post.body %></div>
-</div>
+<article class="animate-fade-in">
+  <div class="article-header">
+    <%= link_to posts_path, class: "back-link" do %>
+      ← Kembali ke Jurnal
+    <% end %>
+
+    <div class="article-meta">
+      Diterbitkan pada <%= @post.created_at.strftime("%d %B %Y") %>
+    </div>
+    
+    <h1 class="article-title">
+      <%= @post.title %>
+    </h1>
+
+    <% if admin_signed_in? %>
+      <div class="action-links">
+        <%= link_to "Edit Post", edit_post_path(@post), class: "btn-ofelos btn-outline-ofelos btn-sm" %>
+        <%= link_to "Hapus Post", @post, method: :delete, data: { confirm: 'Yakin ingin menghapus?' }, class: "btn-ofelos btn-outline-ofelos btn-sm btn-danger" %>
+      </div>
+
+    <% end %>
+  </div>
+
+  <div class="glass-card article-card">
+    <div class="article-content">
+      <%= raw @post.body %>
+    </div>
+  </div>
+
+  <div class="article-footer">
+    <div>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 4px;">Penulis</p>
+      <p style="font-weight: 600; color: white;">Tara Kreasi</p>
+    </div>
+    
+    <div style="display: flex; gap: 12px;">
+      <span style="color: var(--text-muted); font-size: 0.9rem;">Bagikan:</span>
+      <a href="#" style="color: var(--text-secondary); text-decoration: none;">Twitter</a>
+      <a href="#" style="color: var(--text-secondary); text-decoration: none;">LinkedIn</a>
+    </div>
+  </div>
+</article>
+

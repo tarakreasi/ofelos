@@ -1,28 +1,72 @@
 <%= simple_form_for @post do |f| %>
   <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:" %>
-      </h2>
-      <ul>
-        <% @post.errors.full_messages.each do |msg| %>
-          <li>
-            <%= msg %>
-          </li>
-          <% end %>
-      </ul>
-    </div>
+    <%= render 'layouts/flash_messages' %>
   <% end %>
 
   <div class="form-group">
-    <%= f.input :title, class: "form-control" %>
+    <%= f.label :title, "Judul Tulisan", class: "form-label" %>
+    <%= f.input_field :title, class: "form-input", placeholder: "Berikan judul yang menarik...", required: true %>
   </div>
 
   <div class="form-group">
-    <%= f.input :body, :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, class: "form-control" %>
+    <%= f.label :body, "Isi Tulisan", class: "form-label" %>
+    <div class="editor-wrapper">
+      <!-- Hidden input to store the HTML content -->
+      <%= f.input_field :body, as: :hidden, id: 'post_body_input' %>
+      
+      <!-- Quill Editor Container -->
+      <div id="editor-container" style="height: 400px;"></div>
+    </div>
+
+    <script>
+      document.addEventListener("turbolinks:load", function() {
+        // Prevent multiple initializations
+        if (document.querySelector('.ql-container')) return;
+
+        var toolbarOptions = [
+          [{ 'header': [1, 2, 3, false] }],
+          ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+          ['blockquote', 'code-block'],
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+          [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+          [{ 'direction': 'rtl' }],                         // text direction
+          [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+          [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+          [{ 'font': [] }],
+          [{ 'align': [] }],
+          ['clean'],                                         // remove formatting button
+          ['link', 'image']
+        ];
+
+        var quill = new Quill('#editor-container', {
+          modules: {
+            toolbar: toolbarOptions
+          },
+          theme: 'snow'
+        });
+
+        // Load existing content
+        var initialContent = document.getElementById('post_body_input').value;
+        if (initialContent) {
+          quill.clipboard.dangerouslyPasteHTML(initialContent);
+        }
+
+        // Sync content on form submit
+        var form = document.querySelector('form');
+        form.onsubmit = function() {
+          var bodyInput = document.getElementById('post_body_input');
+          bodyInput.value = quill.root.innerHTML;
+        };
+      });
+    </script>
+
   </div>
 
-  <div class="form-group">
-    <%= f.button :submit %>
+  <div class="form-actions">
+    <%= f.button :submit, "Simpan Tulisan", class: "btn-ofelos btn-primary-ofelos btn-full" %>
+    <%= link_to "Batalkan", posts_path, class: "btn-ofelos btn-outline-ofelos" %>
   </div>
 <% end %>
+

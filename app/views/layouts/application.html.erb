@@ -1,19 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>ScotchBlog</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ofelos | Jurnal Belajar Fullstack</title>
+  <meta name="description" content="Ofelos adalah jurnal belajar fullstack development menggunakan Ruby on Rails, mendokumentasikan perjalanan setiap baris kode.">
+  <meta name="keywords" content="Ruby on Rails, Fullstack Development, Learning Journal, Ofelos, Web Development">
+  <meta name="author" content="Tara Kreasi">
+  <!-- Quill.js -->
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+
+
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <!-- Render navigation bar -->
-  <%= render "layouts/navigation" %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <div class="container-fluid">
-    <%= yield %>
-  </div>
+  <%= render 'layouts/flash_messages' %>
 
+
+  <div class="app-container">
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-icon"></div>
+        <h1 class="sidebar-title">Ofelos</h1>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group-label">Utama</div>
+        <%= link_to root_path, class: "nav-item #{'active' if current_page?(root_path)}" do %>
+          <span>Beranda</span>
+        <% end %>
+        <%= link_to posts_path, class: "nav-item #{'active' if current_page?(posts_path) && action_name == 'index'}" do %>
+          <span>Jurnal Post</span>
+        <% end %>
+
+        <% if admin_signed_in? %>
+          <div class="nav-group-label">Admin Panel</div>
+          <%= link_to admins_dashboard_path, class: "nav-item #{'active' if current_page?(admins_dashboard_path)}" do %>
+            <span>Dashboard</span>
+          <% end %>
+          <%= link_to new_post_path, class: "nav-item #{'active' if current_page?(new_post_path)}" do %>
+            <span>Tulis Post Baru</span>
+          <% end %>
+          <%= link_to edit_admin_registration_path, class: "nav-item #{'active' if current_page?(edit_admin_registration_path)}" do %>
+            <span>Pengaturan Akun</span>
+          <% end %>
+          <%= link_to destroy_admin_session_path, method: :delete, class: "nav-item" do %>
+            <span>Keluar</span>
+          <% end %>
+        <% end %>
+
+        <div class="nav-group-label">Daftar Tulisan</div>
+        <% @sidebar_posts.each do |post| %>
+          <%= link_to post_path(post), class: "nav-item #{'active' if @post == post}" do %>
+            <span style="font-size: 0.85rem;"><%= post.title.truncate(30) %></span>
+          <% end %>
+        <% end %>
+      </nav>
+
+      <% unless admin_signed_in? %>
+        <div style="padding: 20px;">
+          <%= link_to 'Admin Login', new_admin_session_path, class: "btn-ofelos btn-outline-ofelos", style: "width: 100%; justify-content: center;" %>
+        </div>
+      <% end %>
+    </aside>
+
+    <main class="main-content">
+      <div class="content-inner animate-fade-in">
+        <%= yield %>
+      </div>
+    </main>
+  </div>
 </body>
 </html>
